@@ -10,8 +10,8 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.Shape;
 import com.badlogic.gdx.physics.box2d.World;
 
-import core.GameManager;
 import core.GameProperties;
+import core.ingame.GameManager;
 
 public class GameObject implements Drawable {
 

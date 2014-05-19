@@ -8,7 +8,7 @@ import java.util.List;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-import core.Camera;
+import core.ingame.Camera;
 
 public class Map implements Drawable {
 

@@ -1,4 +1,4 @@
-package core;
+package core.ingame;
 
 import gameObject.Drawable;
 
@@ -7,6 +7,8 @@ import java.util.List;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.physics.box2d.World;
+
+import core.GameProperties;
 
 public class GameManager {
 

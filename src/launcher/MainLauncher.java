@@ -4,7 +4,7 @@ import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 
 import core.GameProperties;
-import core.GameRender;
+import core.ingame.GameRender;
 
 public class MainLauncher {
 	

@@ -1,4 +1,4 @@
-package core;
+package core.ingame;
 
 import gameObject.Drawable;
 import gameWorld.Map;
@@ -8,6 +8,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.physics.box2d.World;
+
+import core.InputHandler;
 
 public class GameRender implements ApplicationListener {
 	
