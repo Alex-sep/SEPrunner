@@ -1,7 +1,7 @@
 package core;
 
+import gameObject.Drawable;
 import gameWorld.Map;
-import interfaces.Drawable;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;

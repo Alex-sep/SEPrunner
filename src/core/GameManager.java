@@ -1,6 +1,6 @@
 package core;
 
-import interfaces.Drawable;
+import gameObject.Drawable;
 
 import java.util.ArrayList;
 import java.util.List;

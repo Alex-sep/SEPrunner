@@ -1,7 +1,5 @@
 package gameObject;
 
-import interfaces.Drawable;
-
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
@@ -68,7 +66,7 @@ public class GameObject implements Drawable {
 	 * 
 	 * @param world Kollisionsebene
 	 * @param type Beweglichkeit
-	 * @param positionPositionsvektor
+	 * @param position Positionsvektor
 	 * @param density Dichte
 	 * @param friction Reibungskoeffizient
 	 * @param restitution Elastizitätskoeffizient
