@@ -10,10 +10,10 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.Shape;
 import com.badlogic.gdx.physics.box2d.World;
 
-import core.GameProperties;
 import core.ingame.GameManager;
+import core.ingame.GameProperties;
 
-public class GameObject implements Drawable {
+public class GameObject implements DrawableObject, Moveable {
 
 	protected Body body;
 	protected TextureRegion textRG;
@@ -25,26 +25,31 @@ public class GameObject implements Drawable {
 		GameManager.getInstance().addDrawable(this);
 	}
 	
+	@Override
 	public void draw(float stateTime, SpriteBatch batch) {
 		if (visible)
 			batch.draw(textRG, GameProperties.meterToPixel(body.getPosition().x), GameProperties.meterToPixel(body.getPosition().y));
 	}
 
-	public void setFlipped(boolean flip) {
+	@Override
+	public void setFlip(boolean flip) {
 		if (this.flip == flip)
 			return;
 		flip();
 	}
 
+	@Override
 	public void flip() {
 		flip = !flip;
 		textRG.flip(true, false);
 	}
 
+	@Override
 	public boolean isFlipped() {
 		return flip;
 	}
 
+	@Override
 	public void addFixture(float density, float friction, float restitution, boolean sensor, Shape shape) {
 		FixtureDef fixtureDef = new FixtureDef();
 		fixtureDef.density = density;
@@ -56,6 +61,7 @@ public class GameObject implements Drawable {
 		shape.dispose();
 	}
 
+	@Override
 	public void setFixture(float density, float friction, float restitution, boolean sensor, Shape shape) {
 		for (Fixture f : body.getFixtureList())
 			body.destroyFixture(f);
@@ -73,6 +79,7 @@ public class GameObject implements Drawable {
 	 * @param sensor Durchlässigkeit
 	 * @param shape geometrische Form
 	 */
+	@Override
 	public void initBody(World world, BodyDef.BodyType type, Vector2 position, 
 			float density, float friction, float restitution, boolean sensor, Shape shape) {
 		
@@ -88,11 +95,27 @@ public class GameObject implements Drawable {
 		setFixture(density, friction, restitution, sensor, shape);
 	}
 	
+	@Override
 	public void applyForce(Vector2 force, boolean wake) {
 		body.applyForceToCenter(force, wake);
 	}
 	
 	public Body getBody() {
 		return body;
+	}
+
+	@Override
+	public void setVisible(boolean visible) {
+		this.visible = visible;	
+	}
+
+	@Override
+	public boolean isVisible() {
+		return visible;
+	}
+
+	@Override
+	public void toogleVisible() {
+		visible = !visible;
 	}
 }

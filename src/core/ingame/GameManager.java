@@ -1,6 +1,6 @@
 package core.ingame;
 
-import gameObject.Drawable;
+import gameObject.DrawableObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,13 +8,11 @@ import java.util.List;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.physics.box2d.World;
 
-import core.GameProperties;
-
-public class GameManager {
+public class GameManager implements Manageable {
 
 	private static GameManager manager;
 	
-	private List<Drawable> drawables = new ArrayList<Drawable>();
+	private List<DrawableObject> drawables = new ArrayList<DrawableObject>();
 	private List<World> worlds = new ArrayList<World>();
 	
 	private GameManager() {
@@ -27,11 +25,11 @@ public class GameManager {
 		return manager;
 	}
 	
-	public synchronized boolean addDrawable(Drawable drawable) {
+	public synchronized boolean addDrawable(DrawableObject drawable) {
 		return drawables.add(drawable);
 	}
 	
-	public synchronized boolean removeDrawable(Drawable drawable) {
+	public synchronized boolean removeDrawable(DrawableObject drawable) {
 		return drawables.remove(drawable);
 	}
 	
@@ -39,7 +37,7 @@ public class GameManager {
 		drawables.clear();
 	}
 	
-	public List<Drawable> getDrawables() {
+	public List<DrawableObject> getDrawables() {
 		return drawables;
 	}
 	

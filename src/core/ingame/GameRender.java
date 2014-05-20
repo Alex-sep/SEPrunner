@@ -1,6 +1,7 @@
 package core.ingame;
 
-import gameObject.Drawable;
+import gameObject.DrawableObject;
+import gameObject.player.InputHandler;
 import gameWorld.Map;
 
 import com.badlogic.gdx.ApplicationListener;
@@ -8,8 +9,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.physics.box2d.World;
-
-import core.InputHandler;
 
 public class GameRender implements ApplicationListener {
 	
@@ -24,8 +23,6 @@ public class GameRender implements ApplicationListener {
 	@Override
 	public void create() {
 		batch = new SpriteBatch();
-		
-
 		Gdx.input.setInputProcessor(InputHandler.getInstance());
 	}
 
@@ -43,18 +40,16 @@ public class GameRender implements ApplicationListener {
 		Camera.getInstance().update();
 		batch.setProjectionMatrix(Camera.getInstance().combined);
 
-		// render
 		batch.begin();
+		Map.getInstance().draw(batch);								//map
 		
-		batch.disableBlending();
-		Map.getInstance().draw(Gdx.graphics.getDeltaTime(), batch);
-		batch.enableBlending();
-		
-		for(Drawable d : GameManager.getInstance().getDrawables())
+		for(DrawableObject d : GameManager.getInstance().getDrawables())	//gameObjects
 			d.draw(Gdx.graphics.getDeltaTime(), batch);
 		
+		HUD.getInstance().draw(batch);								//userInterface
 		batch.end();
-
+		
+		
 		for(World w : GameManager.getInstance().getWorlds())
 			w.step(Gdx.graphics.getDeltaTime(), 6, 4);
 		

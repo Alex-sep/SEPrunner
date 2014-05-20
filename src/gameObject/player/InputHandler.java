@@ -1,4 +1,4 @@
-package core;
+package gameObject.player;
 
 import java.util.Set;
 import java.util.TreeSet;

@@ -1,7 +1,9 @@
 package gameObject.player;
 
+import gameObject.AnimatedObject;
 
-public class Player extends PlayerInteraction implements Runnable {
+
+public class Player extends AnimatedObject implements Runnable {
 	
 	private static Player player;
 	
